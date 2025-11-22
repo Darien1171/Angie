@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Angie ❤️</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Música de fondo -->
+    <audio id="backgroundMusic" autoplay>
+        <!-- Las canciones se cargarán dinámicamente -->
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Controles de música -->
+    <div class="music-controls">
+        <button id="musicToggle" class="music-control">
+            <span class="music-icon">🎵</span>
+        </button>
+        <button id="nextSong" class="music-control next-song">
+            <span class="music-icon">⏭️</span>
+        </button>
+    </div>
+
+    <!-- Información de la canción actual -->
+    <div class="song-info" id="songInfo">
+        <span id="currentSongName">Cargando música...</span>
+    </div>
+
+    <!-- Mensaje de clic para música (se oculta automáticamente) -->
+    <div class="click-to-play" id="clickToPlay">
+        <p>Haz clic en cualquier lugar para escuchar la música 🎶</p>
+    </div>
+
+    <!-- Corazones flotantes -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <header class="header">
+            <h1 class="title">Para ti, Angie</h1>
+            <p class="subtitle">Un lugar especial para nuestros momentos</p>
+        </header>
+
+        <!-- Carrusel de fotos -->
+        <div class="carousel-container">
+            <div class="carousel" id="carousel">
+                <!-- Las imágenes se cargarán dinámicamente -->
+            </div>
+            <button class="carousel-btn prev" id="prevBtn">❮</button>
+            <button class="carousel-btn next" id="nextBtn">❯</button>
+            <div class="carousel-dots" id="carouselDots"></div>
+        </div>
+
+        <!-- Mensajes románticos -->
+        <div class="messages-container">
+            <div class="message-box animate-fade-in">
+                <p class="romantic-message">"Cada momento contigo es un recuerdo que guardo en mi corazón"</p>
+            </div>
+            <div class="message-box animate-fade-in delay-1">
+                <p class="romantic-message">"Eres la razón de mis sonrisas y la luz en mis días"</p>
+            </div>
+            <div class="message-box animate-fade-in delay-2">
+                <p class="romantic-message">"Contigo, cada día es una nueva aventura llena de amor"</p>
+            </div>
+        </div>
+
+        <!-- Botón para ir a la galería -->
+        <div class="gallery-link-container">
+            <a href="galeria.html" class="gallery-btn">
+                Ver todas nuestras fotos ✨
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

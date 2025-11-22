@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería - Nuestros Momentos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Música de fondo -->
+    <audio id="backgroundMusic" autoplay>
+        <!-- Las canciones se cargarán dinámicamente -->
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <!-- Controles de música -->
+    <div class="music-controls">
+        <button id="musicToggle" class="music-control">
+            <span class="music-icon">🎵</span>
+        </button>
+        <button id="nextSong" class="music-control next-song">
+            <span class="music-icon">⏭️</span>
+        </button>
+    </div>
+
+    <!-- Información de la canción actual -->
+    <div class="song-info" id="songInfo">
+        <span id="currentSongName">Cargando música...</span>
+    </div>
+
+    <!-- Mensaje de clic para música (se oculta automáticamente) -->
+    <div class="click-to-play" id="clickToPlay">
+        <p>Haz clic en cualquier lugar para escuchar la música 🎶</p>
+    </div>
+
+    <!-- Corazones flotantes -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Contenido principal -->
+    <div class="container gallery-page">
+        <header class="header">
+            <h1 class="title">Nuestros Momentos</h1>
+            <p class="subtitle">Cada foto cuenta una historia de amor</p>
+        </header>
+
+        <!-- Botón para volver -->
+        <div class="back-button-container">
+            <a href="Index.html" class="back-btn">← Volver al inicio</a>
+        </div>
+
+        <!-- Grid de galería -->
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Las imágenes se cargarán dinámicamente -->
+        </div>
+
+        <!-- Modal para ver imagen ampliada -->
+        <div id="imageModal" class="modal">
+            <span class="modal-close">&times;</span>
+            <img class="modal-content" id="modalImage">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

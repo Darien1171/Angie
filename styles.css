@@ -1,0 +1,527 @@
+/* Variables de colores */
+:root {
+    --black: #000000;
+    --dark-gray: #1a1a1a;
+    --pink: #ff69b4;
+    --light-pink: #ffb6d9;
+    --dark-pink: #ff1493;
+    --white: #ffffff;
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin: 40px 0 60px 0;
+    animation: fadeInDown 1s ease-out;
+}
+
+.title {
+    font-size: 3.5rem;
+    background: linear-gradient(45deg, var(--pink), var(--light-pink));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 15px;
+    text-shadow: 0 0 30px rgba(255, 105, 180, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--light-pink);
+    font-style: italic;
+    opacity: 0.9;
+}
+
+/* Controles de música */
+.music-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.music-control {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pink), var(--dark-pink));
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+    transition: all 0.3s ease;
+}
+
+.music-control:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(255, 105, 180, 0.6);
+}
+
+.music-control.paused {
+    opacity: 0.5;
+}
+
+.music-control.next-song {
+    background: linear-gradient(135deg, var(--light-pink), var(--pink));
+}
+
+/* Información de la canción */
+.song-info {
+    position: fixed;
+    top: 90px;
+    right: 20px;
+    background: rgba(255, 105, 180, 0.2);
+    border: 2px solid var(--pink);
+    border-radius: 15px;
+    padding: 10px 20px;
+    z-index: 1000;
+    max-width: 250px;
+    backdrop-filter: blur(10px);
+}
+
+#currentSongName {
+    color: var(--light-pink);
+    font-size: 0.9rem;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Mensaje de clic para iniciar música */
+.click-to-play {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--pink), var(--dark-pink));
+    color: white;
+    padding: 15px 30px;
+    border-radius: 25px;
+    z-index: 1001;
+    box-shadow: 0 5px 25px rgba(255, 105, 180, 0.5);
+    animation: pulse 2s ease-in-out infinite;
+    transition: opacity 0.5s ease;
+}
+
+.click-to-play.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.click-to-play p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: translateX(-50%) scale(1);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.05);
+    }
+}
+
+/* Corazones flotantes */
+.hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.heart {
+    position: absolute;
+    font-size: 20px;
+    color: var(--pink);
+    animation: float 6s linear infinite;
+    opacity: 0;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Carrusel */
+.carousel-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(255, 105, 180, 0.3);
+}
+
+.carousel {
+    position: relative;
+    height: 500px;
+    width: 100%;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    pointer-events: none;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+/* Botones del carrusel */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 105, 180, 0.7);
+    border: none;
+    color: white;
+    font-size: 2rem;
+    padding: 15px 20px;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 105, 180, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+    left: 20px;
+}
+
+.carousel-btn.next {
+    right: 20px;
+}
+
+/* Puntos del carrusel */
+.carousel-dots {
+    text-align: center;
+    padding: 20px 0;
+}
+
+.dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 182, 217, 0.4);
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: var(--pink);
+    transform: scale(1.3);
+}
+
+/* Mensajes románticos */
+.messages-container {
+    max-width: 900px;
+    margin: 60px auto;
+}
+
+.message-box {
+    background: linear-gradient(135deg, rgba(255, 105, 180, 0.1), rgba(255, 182, 217, 0.1));
+    border: 2px solid var(--pink);
+    border-radius: 15px;
+    padding: 30px;
+    margin: 25px 0;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(255, 105, 180, 0.2);
+    transition: all 0.3s ease;
+}
+
+.message-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(255, 105, 180, 0.4);
+}
+
+.romantic-message {
+    font-size: 1.3rem;
+    color: var(--light-pink);
+    font-style: italic;
+    line-height: 1.6;
+}
+
+/* Botón de galería */
+.gallery-link-container {
+    text-align: center;
+    margin: 60px 0;
+}
+
+.gallery-btn {
+    display: inline-block;
+    padding: 18px 45px;
+    background: linear-gradient(135deg, var(--pink), var(--dark-pink));
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    box-shadow: 0 5px 20px rgba(255, 105, 180, 0.4);
+    transition: all 0.3s ease;
+}
+
+.gallery-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(255, 105, 180, 0.6);
+}
+
+/* Página de galería */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin: 40px 0;
+}
+
+.gallery-item {
+    position: relative;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(255, 105, 180, 0.2);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 30px rgba(255, 105, 180, 0.5);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Botón de volver */
+.back-button-container {
+    margin: 20px 0;
+}
+
+.back-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    background: rgba(255, 105, 180, 0.2);
+    color: var(--pink);
+    text-decoration: none;
+    border-radius: 25px;
+    border: 2px solid var(--pink);
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.back-btn:hover {
+    background: var(--pink);
+    color: white;
+    transform: translateX(-5px);
+}
+
+/* Modal para imágenes */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    overflow: auto;
+}
+
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 90%;
+    max-height: 90%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(255, 105, 180, 0.5);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: var(--pink);
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    color: var(--light-pink);
+    transform: scale(1.2);
+}
+
+.modal-caption {
+    text-align: center;
+    color: var(--light-pink);
+    padding: 20px;
+    font-size: 1.2rem;
+}
+
+/* Animaciones */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeInUp 1s ease-out;
+}
+
+.animate-fade-in.delay-1 {
+    animation-delay: 0.3s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.animate-fade-in.delay-2 {
+    animation-delay: 0.6s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+    }
+    to {
+        text-shadow: 0 0 40px rgba(255, 105, 180, 0.8);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .carousel {
+        height: 350px;
+    }
+
+    .romantic-message {
+        font-size: 1.1rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 15px;
+    }
+
+    .carousel-btn {
+        padding: 10px 15px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .carousel {
+        height: 250px;
+    }
+
+    .message-box {
+        padding: 20px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+}
