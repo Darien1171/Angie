@@ -1,7 +1,12 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nPágina web romántica para Angie\n\n- Carrusel de fotos con navegación automática y manual\n- Reproductor de música MP3 con múltiples canciones\n- Galería de fotos con modal de vista ampliada\n- Efectos especiales: corazones flotantes animados\n- Mensajes románticos con animaciones\n- Diseño responsive con tema negro/rosado\n- Reproductor automático con fallback para navegadores\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git remote add:*)",
+      "Bash(git branch:*)",
+      "Bash(git commit:*)",
+      "Bash(git push)"
     ],
     "deny": [],
     "ask": []
